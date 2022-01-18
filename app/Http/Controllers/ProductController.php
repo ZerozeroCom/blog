@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use Illuminate\Support\Facades\Redis;
+use App\Http\Services\ShortUrlService;
 
 class ProductController extends Controller
 {
@@ -187,4 +188,11 @@ class ProductController extends Controller
 
         ]);
     }
+
+    public function getShortUrl($id){
+        $service =new ShortUrlService();
+        $url = $service->makeShortUrl("http://localhost:8000/products/$id");
+        return response(['url'=>$url]);
+    }
+
 }

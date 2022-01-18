@@ -17,11 +17,14 @@ Route::get('/', 'WebController@index');
 Route::get('/contact-us', 'WebController@contactUs');
 Route::post('/read-notification', 'WebController@readNotification');
 Route::post('/products/check-product', 'ProductController@checkProduct');
+Route::get('/products/{id}/shared-url', 'ProductController@getShortUrl');
+Route::resource('products','ProductController');
+
 
 Route::post('/','ProductController@index');
 Route::post('signup','AuthController@signup');
 Route::post('login','AuthController@login');
-Route::resource('products','ProductController');
+
 Route::resource('admin/orders','Admin\OrderController');
 Route::post('admin/orders/{id}/delivery','Admin\OrderController@delivery');
 Route::post('admin/tools/update-product-price','Admin\ToolController@updateProductPrice');

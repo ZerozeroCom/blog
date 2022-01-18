@@ -28,6 +28,7 @@
                 <td>{{ $product ->content }}</td>
                 <td style = {{ $product ->price < 200 ? 'color:red;' : ''}}>{{ $product ->price }}</td>
                 <td><input class="check_product" type="button" value="確認商品數量" data-id="{{$product->id}}"></td>
+                <td><input class="share_product" type="button" value="分享商品" data-id="{{$product->id}}"></td>
             </tr>
         @endforeach
     </tbody>
@@ -58,6 +59,17 @@
                 }else{
                     alert('商品數量不足')
                 }
+            })
+    })
+
+    $('.share_product').on('click',function(){
+        var id = $(this).data('id');
+            $.ajax({
+                method: 'GET',
+                url: `/products/${id}/shared-url`,
+            })
+            .done(function(msg){
+                    alert('請複製此連結'+msg.url)
             })
     })
 </script>
