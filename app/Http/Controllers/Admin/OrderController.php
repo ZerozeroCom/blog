@@ -33,7 +33,7 @@ class OrderController extends Controller
 
     public function index(Request $request){
         $orderCount = Order::whereHas('orderItems')->count();
-        $dataPerPage =3;
+        $dataPerPage =5;
         $orderPages = ceil($orderCount / $dataPerPage );
         $currentPage = isset($request->query()['page']) ? $request->query()['page'] : 1;
         $orders = Order::with('user','orderItems.product')->orderBy('created_at', 'desc')
