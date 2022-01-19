@@ -59,6 +59,10 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],
+        'url_shorten' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/url_shorten.log'),
+        ],
 
         'daily' => [
             'driver' => 'daily',
