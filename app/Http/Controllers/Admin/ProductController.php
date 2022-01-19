@@ -32,7 +32,7 @@ class ProductController extends Controller
             return redirect()->back()->withErrors(['msg' => '參數錯誤']);
         }
         $product = Product::find($productId);
-        $path = $file->store('public/images');
+        $path = $file->store('images');
         $product->images()->create([
             'filename' => $file->getClientOriginalName(),
             'path' =>$path
