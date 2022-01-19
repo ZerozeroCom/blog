@@ -1,8 +1,13 @@
 @extends('layouts.admin_app')
 @section('content')
 
-<h2>後臺產品列表</h2>
+<h2>產品列表</h2>
 <span>訂單總數:{{ $productCount}} </span>
+<div>
+    <input type="button" class="import" value="匯入excel">
+</div>
+
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -53,7 +58,9 @@
         $('#product_id').val($(this).data('id'))
         $('#upload-image').modal()
     })
-
+    $('.import').click(function(){
+        $('#import').modal()
+    })
 </script>
 
 @endsection

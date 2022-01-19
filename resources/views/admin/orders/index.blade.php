@@ -9,6 +9,8 @@
 @section('content')
 <h2>後臺訂單列表</h2>
 <span>訂單總數:{{ $orderCount}} </span>
+<a href="/admin/orders/excel/export">匯出訂單excel</a>
+<a href="/admin/orders/excel/export-by-shipped">匯出分類訂單excel</a>
 <table>
 <thead>
     <tr>

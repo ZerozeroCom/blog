@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Notifications\OrderDelivery;
+use App\Exports\OrdersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderController extends Controller
 {
@@ -59,6 +61,10 @@ class OrderController extends Controller
                 $order->user->notify(new OrderDelivery);
                 return response(['result'=>true]);
             }
+
+    }
+    public function export(){
+        return Excel::download(new OrdersExport,'orders.xlsx');
 
     }
 }
