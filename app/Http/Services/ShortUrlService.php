@@ -6,9 +6,10 @@ use Illuminate\Support\Facades\Log;
 
 use Throwable;
 
-class ShortUrlService{
+class ShortUrlService implements ShortUrlinterdaceService{
 
     protected $client;
+    public $version;
 
     public function __construct()
     {
