@@ -16,16 +16,21 @@
 <h3>聯絡我們</h3>
 
 
-<form action="">
-    請問你是: <input type="text"><br>
-    請問你的消費時間: <input type="date"><br>
-    你消費的商品種類:
-    <select name="" id="">
-            <option value="物品">物品</option>
-            <option value="物品">食物</option>
-    </select><br>
-    回饋資訊: <input type="text"><br>
-    <button>送出</button><br>
+<form class ="w-50" action="">
+    <div class="form-group">
+        <label>請問你是: </label>
+        <input name="name" type="text"><br>
+        <label>請問你的消費時間:</label>
+        <input name="date"type="date"><br>
+        <label>你消費的商品種類:</label>
+            <select name="product" id="">
+                <option value="物品">物品</option>
+                <option value="物品">食物</option>
+            </select><br>
+        <label>回饋資訊:</label>
+        <input name ="text" type="text"><br>
+        <button>送出</button><br>
+    </div>
 </form>
 
 

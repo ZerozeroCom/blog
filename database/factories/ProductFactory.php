@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'title' =>'測試產品',
             'content' => $this->faker->word,
             'price' => $this->faker->numberBetween(100,1000),
-            'quantity' => $this->faker->numberBetween(1,10)
+            'quantity' => $this->faker->numberBetween(100,1000)
         ];
     }
     public function less(){

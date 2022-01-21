@@ -5,14 +5,22 @@ namespace App\Http\Controllers;
 
 
 //匯入  可按著ctrl點擊追蹤
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use Illuminate\Support\Facades\Redis;
 use App\Http\Services\ShortUrlService;
+use App\Http\Services\AuthService;
 
 class ProductController extends Controller
 {
+    public function __construct(ShortUrlService $shortUrlService,AuthService $authService)
+    {
+        $this->shortUrlService = $shortUrlService;
+        $this->authService = $authService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -190,8 +198,8 @@ class ProductController extends Controller
     }
 
     public function getShortUrl($id){
-        $service =new ShortUrlService();
-        $url = $service->makeShortUrl("http://localhost:8000/products/$id");
+        $this->authService->fakeReturn();
+        $url = $this->shortUrlService->makeShortUrl("http://localhost:8000/products/$id");
         return response(['url'=>$url]);
     }
 

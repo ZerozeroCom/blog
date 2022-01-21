@@ -35,6 +35,16 @@ class CreateOrdersAndOrderItems extends Migration
      */
     public function down()
     {
+        Schema::table('orders', function (Blueprint $table)
+        {
+            $table->dropForeign('orders_cart_id_foreign');
+            $table->dropForeign('orders_user_id_foreign');
+        });
+        Schema::table('order_items', function (Blueprint $table)
+        {
+            $table->dropForeign('order_items_order_id_foreign');
+            $table->dropForeign('order_items_product_id_foreign');
+        });
         Schema::dropIfExists('orders');
         Schema::dropIfExists('order_items');
     }

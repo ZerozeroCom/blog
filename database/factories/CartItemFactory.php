@@ -21,7 +21,7 @@ class CartItemFactory extends Factory
         return [
             'cart_id' => Cart::factory(),
             'product_id' => Product::factory(),
-            'quantity'=>$this->faker->randomDigit()
+            'quantity'=>$this->faker->numberBetween(1,10)
         ];
     }
 }
