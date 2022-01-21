@@ -30,9 +30,9 @@ class ProductControllerTest extends TestCase
         $product = Product::factory()->create();
         $id = $product->id;
 
-/*        $this->mock(AuthService::class, function ($mock) {
+        $this->mock(AuthService::class, function ($mock) {
             $mock->shouldReceive('fakeReturn');
-        });*/
+        });
 
         $this->mock(ShortUrlService::class, function ($mock) use($id) {
             $mock->shouldReceive('makeShortUrl')
