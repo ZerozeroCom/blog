@@ -25,6 +25,8 @@ Route::post('/','ProductController@index');
 Route::post('signup','AuthController@signup');
 Route::post('login','AuthController@login');
 
+
+Route::get('/admin/orders/datatable','Admin\OrderController@datatable');
 Route::resource('admin/orders','Admin\OrderController');
 Route::resource('admin/products','Admin\ProductController');
 Route::post('/admin/products/upload-image','Admin\ProductController@uploadImage');

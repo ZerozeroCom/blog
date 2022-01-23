@@ -54,6 +54,7 @@ class AuthController extends Controller
         $user = $request->user()->id;
         //dd($user);
         DB::table('personal_access_tokens')->where('tokenable_id',$user)->delete();
+        Auth::logout();
         return response(
             ['message' => '成功登出']
         );
