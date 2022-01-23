@@ -41,6 +41,10 @@
             </select>
             <button>click</button>
         </form>
+        <div id="app">
+            Counter: @{{ counter }}
+            <example-component></example-component>
+          </div>
 
     </div>
     <div class="col-8">
@@ -54,6 +58,15 @@
 
 
 <script>
+const Counter = {
+  data() {
+    return {
+      counter: 0
+    }
+  }
+}
+Vue.createApp(Counter).mount('#app')
+
     $('.check_product').on('click',function(){
             $.ajax({
                 method: 'POST',
