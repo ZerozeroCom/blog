@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
 
+
 class CartController extends Controller
 {
+    protected $cartService;
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +46,7 @@ class CartController extends Controller
         //with()  順便把底下的資料撈出 節省效能
         $cart = $user->carts()->where('checkouted',false)->with('cartItems')->first();
         if($cart){
-            $result =$cart->checkout();
+            $result =$this->cartService->checkout($cart);
             return response($result);
         }else{
             return response('沒有購物車',400);

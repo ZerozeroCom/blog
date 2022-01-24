@@ -13,18 +13,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'WebController@index');
+
 Route::get('/contact-us', 'WebController@contactUs');
 Route::post('/read-notification', 'WebController@readNotification');
 Route::post('/products/check-product', 'ProductController@checkProduct');
 Route::get('/products/{id}/shared-url', 'ProductController@getShortUrl');
 Route::resource('products','ProductController');
 
-
-Route::post('/','ProductController@index');
-Route::post('signup','AuthController@signup');
-Route::post('login','AuthController@login');
-
+Route::middleware(['throttle:global'])->group(function(){
+    Route::get('/', 'WebController@index');
+    Route::post('/','ProductController@index');
+    Route::post('signup','AuthController@signup');
+    Route::post('login','AuthController@login');
+    });
 
 Route::get('/admin/orders/datatable','Admin\OrderController@datatable');
 Route::resource('admin/orders','Admin\OrderController');
