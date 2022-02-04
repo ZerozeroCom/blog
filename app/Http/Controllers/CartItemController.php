@@ -110,6 +110,7 @@ class CartItemController extends Controller
     {
         $form = $request->validated();
         $item = CartItem::find($id);
+        //非集合方法
         $item->fill(['quantity'=> $form['quantity']]);
         $item->save();
 
